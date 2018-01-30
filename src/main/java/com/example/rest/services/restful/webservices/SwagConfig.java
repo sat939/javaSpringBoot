@@ -1,18 +1,34 @@
-//package com.example.rest.services.restful.webservices;
-//
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.context.annotation.Configuration;
-//
-//import springfox.documentation.spi.DocumentationType;
-//import springfox.documentation.spring.web.plugins.Docket;
-//import springfox.documentation.swagger2.annotations.EnableSwagger2;
-//
-//@Configuration
-//@EnableSwagger2
-//public class SwagConfig {
-//
-//	@Bean
-//	public Docket api() {
-//		return new Docket(DocumentationType.SWAGGER_2);
-//	}
-//}
+package com.example.rest.services.restful.webservices;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+@Configuration
+@EnableSwagger2
+public class SwagConfig {
+	
+	public static final Contact DEFAULT_CONTACT = new Contact(" "," "," ");
+	
+	public static final ApiInfo DEFAULT_API_INFO = new ApiInfo("SpringBoot Application", "REST Api's using Spring Boot",
+			"1.0", "urn:tos", DEFAULT_CONTACT, "Apache 2.0","http://www.apache.org/licenses/LICENSE-2.0");
+	
+	private static final Set<String> Produces_and_Consumes = new HashSet<String>(Arrays.asList("application/xml", "application/json"));
+
+	@Bean
+	public Docket api() {
+		return new Docket(DocumentationType.SWAGGER_2)
+				.apiInfo(DEFAULT_API_INFO)
+				.produces(Produces_and_Consumes)
+				.consumes(Produces_and_Consumes);
+	}
+}
