@@ -6,7 +6,7 @@
 	<groupId>com.example.rest.services</groupId>
 	<artifactId>restful_webservices</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>restful_webservices</name>
 	<description>Demo project for Spring Boot</description>
